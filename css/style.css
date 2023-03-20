@@ -12,9 +12,12 @@ input {
   display: flex;
   flex-direction: column;
 }
-/* .text-field {
-
-} */
+.username b {
+  color: rgb(17, 128, 17);
+}
+.tinted {
+  color: rgb(32, 207, 207);
+}
 
 #input {
   height: 30px;
@@ -27,7 +30,7 @@ span {
   white-space: pre;
 }
 .logo {
-  margin: 0 auto 0 25%; /* Gives that scrolling effect as the typing happens */
+  margin: 0 auto 0 25%;
   animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 .information {
