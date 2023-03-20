@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  overflow-x: hidden;
+}
+body,
+input {
+  background-color: black;
+}
+#response {
+  display: flex;
+  flex-direction: column;
+}
+/* .text-field {
+
+} */
+
+#input {
+  height: 30px;
+  width: 90vw;
+  font-size: 16px;
+  border: none;
+  outline: none;
+}
+span {
+  white-space: pre;
+}
+.logo {
+  margin: 0 auto 0 25%; /* Gives that scrolling effect as the typing happens */
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+.information {
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
