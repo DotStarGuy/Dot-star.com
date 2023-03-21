@@ -1,4 +1,6 @@
 var inputField = document.getElementById("input");
+var response = document.getElementById("response");
+var a = document.createElement("a");
 inputField.focus();
 inputField.select();
 
@@ -23,14 +25,18 @@ inputField.onkeydown = function (event) {
         var text = document.createTextNode(`
 Available commands:
 
-help        Displays this message.
-clear       Clears the terminal screen.
-whois       Displays some information about me.
-blog       Redirects you to .★'s blog`);
+help          Displays this message.                                  discord         Links my Discord server.
+clear         Clears the terminal screen.                           reload          Reloads the page.
+whois        Displays some information about me.           pricing         General information about how much, and how i charge.
+blog          Redirects you to my blog.                              exit              Closes the current tab.`);
         break;
       case "clear":
         var spans = document.getElementsByTagName("span");
+        var links = document.getElementsByTagName("a");
         inputField.value = "";
+        while (links.length > 0) {
+          links[0].parentNode.removeChild(links[0]);
+        }
         while (spans.length > -1) {
           spans[0].parentNode.removeChild(spans[0]);
         }
@@ -57,6 +63,51 @@ Heh, so about the blog thing...
 It isn't done yet.
 It's something I will create in the future... maybe... hopefully (probably not).`);
         break;
+      case "exit":
+        window.close();
+        break;
+      case "discord":
+        var div = document.createElement("div");
+        div.setAttribute("class", "discord");
+        // discord
+        a.setAttribute("href", "https://discord.gg/PW7t6NBs46");
+        a.textContent = `
+Here's a link to my Discord servers.
+
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⡟⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⢹⣿⣿⣿
+⣿⣿⣿⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢸⣿⣿⣿
+⣿⣿⣿⡇⠄⠄⠄⢠⣴⣾⣵⣶⣶⣾⣿⣦⡄⠄⠄⠄⢸⣿⣿⣿
+⣿⣿⣿⡇⠄⠄⢀⣾⣿⣿⢿⣿⣿⣿⣿⣿⣿⡄⠄⠄⢸⣿⣿⣿
+⣿⣿⣿⡇⠄⠄⢸⣿⣿⣧⣀⣼⣿⣄⣠⣿⣿⣿⠄⠄⢸⣿⣿⣿
+⣿⣿⣿⡇⠄⠄⠘⠻⢷⡯⠛⠛⠛⠛⢫⣿⠟⠛⠄⠄⢸⣿⣿⣿
+⣿⣿⣿⡇⠄  Add me on diccord! ⢸⣿⣿⣿
+⣿⣿⣿⣧⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⢸⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣆⣸⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿`;
+
+        div.appendChild(a);
+        response.appendChild(div);
+        break;
+      case "reload":
+        location.reload();
+        break;
+      case "pricing":
+        var text = document.createTextNode(`
+Okay, let's talk money.
+The price of a script/program really depends on the size of the project.
+Small size script €20
+Medium size script €50
+Big scripts €70
+Those prices are an estimate.
+I would need to know what you want exactly in order to give you an accurate price.
+For full either GUI or CLI programs contact me on Discord and we can talk about it.
+
+I do all transactions through paypal for alternative payment methods contact me on Discord.`);
+        break;
+      case "exit":
+        window.close();
+        break;
       default:
         var text = document.createTextNode(
           "Unknown command, type 'help' for the list of commands"
@@ -67,7 +118,6 @@ It's something I will create in the future... maybe... hopefully (probably not).
 
     // appending the text
     span.appendChild(text);
-    var response = document.getElementById("response");
     response.appendChild(span);
     // keep the input field in view
     inputField.scrollIntoView();

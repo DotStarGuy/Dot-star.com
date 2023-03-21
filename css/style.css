@@ -18,7 +18,11 @@ input {
 .tinted {
   color: rgb(32, 207, 207);
 }
-
+.discord a {
+  white-space: pre;
+  color: white;
+  text-decoration: none;
+}
 #input {
   height: 30px;
   width: 90vw;
